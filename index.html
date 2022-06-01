@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <title>Document</title>
+
+   
+  
+</head>
+<style>
+    input[type=text], select {
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    input[type=submit] {
+      width: 50%;
+      background-color: #4c4faf;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+    
+    p {
+      width: 50%;
+      border-radius: 5px;
+
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+</style>
+<body style="margin: 5% 10%">
+    <!-- style="margin: 5% 10%" -->
+    <form onsubmit="return false">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" ><br>
+ 
+        <!-- <select name="countries" id="countries">
+            <option value="India">India</option>
+            <option value="Austalia">Australia</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="England">England</option>
+            <option value="Bangladesh">Bangladesh</option>
+        </select> -->
+
+        <label for="last Name">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" ><br>
+ 
+        <!-- <input pys-onClick="sub" type="submit" id="btn-form" value="submit">
+        <input pys-onClick="showColumns" type="submit" id="btn-form" value="submit">
+        <input pys-onClick="test" type="submit" id="btn-form" value="submit"> -->
+        <button id="shufle" 
+             class="mt-4 p-2 text-white bg-blue-600 rounded" 
+             pys-onClick="shuffle_array">
+                Shufle
+        </button>
+
+        <button id="calculate" 
+             class="mt-4 p-2 text-white bg-green-600 rounded" 
+             pys-onClick="sub">
+                Calculate
+        </button>
+
+        <button id="test-numpy" 
+             class="mt-4 p-2 text-white bg-pink-600 rounded" 
+             pys-onClick="testing">
+                Test Numpy
+        </button>
+
+        <!-- <button id="msql-file" 
+             class="mt-4 p-2 text-white bg-pink-600 rounded" 
+             pys-onClick="showColumns">
+                Mysql
+        </button> -->
+        
+        <!-- <py-button  id="calculate" label="Calculate">
+            def test_print(*args,**kwargs):
+                result_place = Element('output')
+                result_place.write(Element('name').value)
+    
+        </py-button> -->
+ 
+ 
+    </form>
+    <p>Output:</p>
+    <div id="output" class="text-3xl">
+        
+    </div>
+
+    <py-env>
+        
+        
+        - numpy
+       
+          
+    </py-env>
+
+    <py-script src="./main.py"></py-script>
+    
+
+    
+    <py-script>
+ 
+        def sub(*args,**kwargs):
+            result_place = Element('output')
+            result_place.write((float(Element('name').value)) * float((Element('lastName').value))) 
+            <!-- result_place.write(f"{Element('name').value}  {Element('lastName').value}") -->
+    
+    </py-script>
+
+    <py-script>
+        import numpy as np
+        arr = np.array([1,2,3,4,5,6,7])
+        def shuffle_array2(*args):
+            pyscript.write('output','I am Legend')
+    </py-script>
+
+    <py-script>
+        <!-- import mysql.connector
+        from tabulate import tabulate
+
+        mydb = mysql.connector.connect(
+            host="192.46.225.247",
+            user="joeysabusido",
+            password="Genesis@11",
+            database="ldglobal",
+            auth_plugin='mysql_native_password')
+        cursor = mydb.cursor()
+
+        def showColumns():
+            query ='SHOW COLUMNS FROM ldglobal.payroll_computation;'
+            cursor.execute(query)
+            myresult = cursor.fetchall()
+
+            for i myresult:
+                pyscript.write('output',i[0]) -->
+            
+    </py-script>
+
+    
+
+    <!-- <py-script src="/main.py"></py-script> -->
+    
+</body>
+</html>
