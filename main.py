@@ -38,7 +38,7 @@ def create_database(*args, **kwargs):
     """
     try:
         conn.execute(
-            "CREATE TABLE IF NOT EXISTS admin (id INT AUTO_INCREMENT PRIMARY KEY,\
+            "CREATE TABLE IF NOT EXISTS admin_login (id INT AUTO_INCREMENT PRIMARY KEY,\
                 username VARCHAR(250), password_admin VARCHAR(250),status_admin VARCHAR(250))")
 
         console.log('databse has been created') 
@@ -50,7 +50,7 @@ def insert_adminLogin(*args, **kwargs):
     inserting data to admin database
     """ 
     conn.execute(
-        """INSERT INTO admin (username,password_admin,status_admin) VALUES('joeysabusido','genesis@11','approved') """)
+        """INSERT INTO admin_login (id,username,password_admin,status_admin) VALUES('3','joey','genesis@11','approved') """)
     console.log('Item is inserted')
     
 def fetch_data_admin(*args, **kwargs):
@@ -58,12 +58,15 @@ def fetch_data_admin(*args, **kwargs):
     This function is for fetching
     data from admin
     """
-    user_login_list = conn.execute('SELECT id FROM admin')
+    user_login_list = conn.execute('SELECT * from admin_login')
+    # user_login_list = conn.execute('SELECT name from sqlite_master where type= "table"')
+    # 'SELECT name from sqlite_master where type= "table"'
     
-    for row in user_login_list:
-        # print(row[0],row[1],row[2])
-        a = row[0]
-        pyscript.write('output2',a)
+    # for row in user_login_list:
+    #     # print(row[0],row[1],row[2])
+    #     a = row[0]
+    #     pyscript.write('output2',a)
+    pyscript.write('output2',user_login_list.fetchall())
         
     # pyscript.write('output2','i am legend')
 # create_database()   
