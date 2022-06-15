@@ -2,9 +2,10 @@ import numpy as np
 # import mysql.connector
 # import mysql
 import sqlite3
+from js import console
 # import _mysql_connector
 
-
+conn = sqlite3.connect('arise_database.db')
 
 def shuffle_array(*args):
     pyscript.write('output','hello')
@@ -24,9 +25,48 @@ def arrayList(*args):
     for i in arr:
         pyscript.write('output2',i)
     
-  
+def loginPage():
+    #return render(request, 'accounts/login.html')
+ 
+        username = Element('username').element.value
+        password = Element('password').element.value
+
+def create_database(*args, **kwargs):
+    """
+    This function is for 
+    creating database
+    """
+    try:
+        conn.execute(
+            "CREATE TABLE IF NOT EXISTS admin (id INT AUTO_INCREMENT PRIMARY KEY,\
+                username VARCHAR(250), password_admin VARCHAR(250),status_admin VARCHAR(250))")
+
+        console.log('databse has been created') 
+    except Exception as ex:
+        print("Error", f"Error due to :{str(ex)}")
+def insert_adminLogin(*args, **kwargs):
+    """
+    This function is for 
+    inserting data to admin database
+    """ 
+    conn.execute(
+        """INSERT INTO admin (username,password_admin,status_admin) VALUES('joeysabusido','genesis@11','approved') """)
+    console.log('Item is inserted')
     
+def fetch_data_admin(*args, **kwargs):
+    """
+    This function is for fetching
+    data from admin
+    """
+    user_login_list = conn.execute('SELECT id FROM admin')
     
+    for row in user_login_list:
+        # print(row[0],row[1],row[2])
+        a = row[0]
+        pyscript.write('output2',a)
+        
+    # pyscript.write('output2','i am legend')
+# create_database()   
 # mydb = mysql.connector.connect(
 #     host="192.46.225.247",
 #     user="joeysabusido",
