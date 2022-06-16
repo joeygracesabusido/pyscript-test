@@ -5,7 +5,7 @@ import sqlite3
 from js import console
 # import _mysql_connector
 
-conn = sqlite3.connect('arise_database.db')
+conn = sqlite3.connect("arise_database.db")
 
 def shuffle_array(*args):
     pyscript.write('output','hello')
@@ -52,10 +52,10 @@ def insert_adminLogin(*args, **kwargs):
     
     username = Element('username').element.value
     password1 = Element('password').element.value
+    status2 = Element('for_status').element.value
     
     conn.execute(
-        """INSERT INTO admin_login (username,password_admin,status_admin) VALUES('{}','{}','{}'.format(username,password1,'approved'))
-            """)
+        "INSERT INTO admin_login (username,password_admin,status_admin) VALUES('{}','{}','{}')".format(username,password1,status2))
     console.log('Item is inserted')
     
 def fetch_data_admin(*args, **kwargs):
@@ -67,11 +67,11 @@ def fetch_data_admin(*args, **kwargs):
     # user_login_list = conn.execute('SELECT name from sqlite_master where type= "table"')
     # 'SELECT name from sqlite_master where type= "table"'
     
-    # for row in user_login_list:
-    #     # print(row[0],row[1],row[2])
-    #     a = row[0]
-    #     pyscript.write('output2',a)
-    pyscript.write('output2',user_login_list.fetchall())
+    for row in user_login_list:
+        # print(row[0],row[1],row[2])
+        a = row[1]
+        pyscript.write('output2',a)
+    # pyscript.write('output2',user_login_list.fetchall())
         
     # pyscript.write('output2','i am legend')
 # create_database()   
