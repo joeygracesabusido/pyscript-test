@@ -38,7 +38,7 @@ def create_database(*args, **kwargs):
     """
     try:
         conn.execute(
-            "CREATE TABLE IF NOT EXISTS admin_login (id INT AUTO_INCREMENT PRIMARY KEY,\
+            "CREATE TABLE IF NOT EXISTS admin_login (ID INTEGER PRIMARY KEY AUTOINCREMENT,\
                 username VARCHAR(250), password_admin VARCHAR(250),status_admin VARCHAR(250))")
 
         console.log('databse has been created') 
@@ -49,8 +49,13 @@ def insert_adminLogin(*args, **kwargs):
     This function is for 
     inserting data to admin database
     """ 
+    
+    username = Element('username').element.value
+    password1 = Element('password').element.value
+    
     conn.execute(
-        """INSERT INTO admin_login (id,username,password_admin,status_admin) VALUES('3','joey','genesis@11','approved') """)
+        """INSERT INTO admin_login (username,password_admin,status_admin) VALUES('{}','{}','{}'.format(username,password1,'approved'))
+            """)
     console.log('Item is inserted')
     
 def fetch_data_admin(*args, **kwargs):
